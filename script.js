@@ -366,18 +366,20 @@ function renderCart() {
 }
 
 function goToCheckout() {
-    // Получаем данные пользователя из Telegram WebApp
-    const tg = window.Telegram.WebApp;
-    const user = tg.initDataUnsafe?.user || {};
+    // Проверяем есть ли Telegram WebApp
+    const tg = window.Telegram?.WebApp;
+    const user = tg?.initDataUnsafe?.user || {
+        id: 123456789, // Тестовый ID
+        first_name: 'Тест',
+        last_name: 'Тестов'
+    };
     
-    // Получаем выбранный город
     const city = localStorage.getItem('selectedCity') || 'Москва';
     
-    // Формируем данные для отправки
     const orderData = {
-        telegram_id: user.id || null,
-        first_name: user.first_name || '',
-        last_name: user.last_name || '',
+        telegram_id: user.id,
+        first_name: user.first_name,
+        last_name: user.last_name,
         city: city,
         products: cart.map(item => ({
             id: item.id,
@@ -390,7 +392,8 @@ function goToCheckout() {
         total_items: cart.reduce((sum, item) => sum + item.count, 0)
     };
     
-    // Отправляем webhook
+    console.log('Отправляем данные:', orderData);
+    
     fetch('https://n8n.biomedika.shop/webhook/bce565c3-60bc-4f90-88c6-70887ebf40e5', {
         method: 'POST',
         headers: {
@@ -399,20 +402,20 @@ function goToCheckout() {
         body: JSON.stringify(orderData)
     })
     .then(response => {
-        if (response.ok) {
-            console.log('Заказ отправлен успешно');
-            cart = [];
-            saveCart();
-            alert('Заказ оформлен! Мы свяжемся с вами в ближайшее время.');
-            window.location.href = 'index.html';
-        } else {
-            console.error('Ошибка отправки заказа');
-            alert('Ошибка оформления заказа. Попробуйте позже.');
-        }
+        console.log('Статус:', response.status);
+        if (!response.ok) throw new Error('Ошибка сервера');
+        return response.text();
+    })
+    .then(data => {
+        console.log('Ответ:', data);
+        cart = [];
+        saveCart();
+        alert('Заказ оформлен!');
+        window.location.href = 'index.html';
     })
     .catch(error => {
         console.error('Ошибка:', error);
-        alert('Ошибка соединения. Проверьте интернет.');
+        alert('Ошибка: ' + error.message);
     });
 }
 
