@@ -365,7 +365,56 @@ function renderCart() {
     document.getElementById('total-count').innerText = totalItems;
 }
 
-function goToCheckout() { window.location.href = "checkout.html"; }
+function goToCheckout() {
+    // Получаем данные пользователя из Telegram WebApp
+    const tg = window.Telegram.WebApp;
+    const user = tg.initDataUnsafe?.user || {};
+    
+    // Получаем выбранный город
+    const city = localStorage.getItem('selectedCity') || 'Москва';
+    
+    // Формируем данные для отправки
+    const orderData = {
+        telegram_id: user.id || null,
+        first_name: user.first_name || '',
+        last_name: user.last_name || '',
+        city: city,
+        products: cart.map(item => ({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            count: item.count,
+            total: item.price * item.count
+        })),
+        total_amount: cart.reduce((sum, item) => sum + (item.price * item.count), 0),
+        total_items: cart.reduce((sum, item) => sum + item.count, 0)
+    };
+    
+    // Отправляем webhook
+    fetch('https://n8n.biomedika.shop/webhook/bce565c3-60bc-4f90-88c6-70887ebf40e5', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData)
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Заказ отправлен успешно');
+            cart = [];
+            saveCart();
+            alert('Заказ оформлен! Мы свяжемся с вами в ближайшее время.');
+            window.location.href = 'index.html';
+        } else {
+            console.error('Ошибка отправки заказа');
+            alert('Ошибка оформления заказа. Попробуйте позже.');
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Ошибка соединения. Проверьте интернет.');
+    });
+}
 
 // --- ФУНКЦИИ ИЗБРАННОГО ---
 function saveWishlist() {
