@@ -369,46 +369,43 @@ async function goToCheckout() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     if (!cart.length) return;
 
-    const user = window.Telegram?.WebApp?.initDataUnsafe?.user || {
-        id: 999999,
-        username: 'test_user',
-        first_name: 'Test',
-        last_name: 'User'
-    };
-
-    // Получаем город из элемента или ставим "Москва" по умолчанию
-    const cityElement = document.querySelector('.city-selector');
-    const city = cityElement ? cityElement.textContent.trim() : 'Москва и область';
-
-    const orderData = {
-        user_id: user.id,
-        username: user.username || null,
-        first_name: user.first_name || null,
-        last_name: user.last_name || null,
-        city: city,
-        cart: cart,
-        total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
-    };
-
-    console.log('✓ Order data:', JSON.stringify(orderData, null, 2));
-
     try {
+        // Получаем данные пользователя Telegram
+        const user = window.Telegram?.WebApp?.initDataUnsafe?.user;
+        if (!user) throw new Error('Открывайте сайт через Telegram');
+
+        // Получаем город и убираем символ ⌄
+        const cityElement = document.querySelector('.city-selector');
+        let city = cityElement ? cityElement.textContent.trim() : 'Москва и область';
+        city = city.replace(/\s*⌄\s*$/, '').trim();
+
+        // Подсчёт суммы
+        const total = cart.reduce((sum, item) => sum + (item.price * item.count), 0);
+
+        const orderData = {
+            user_id: user.id,
+            username: user.username || null,
+            first_name: user.first_name || null,
+            last_name: user.last_name || null,
+            city: city,
+            cart: cart,
+            total: total
+        };
+
         const response = await fetch('https://n8n.biomedika.shop/webhook/bce565c3-60bc-4f90-88c6-70887ebf40e5', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(orderData)
         });
 
-        if (!response.ok) throw new Error('Order failed');
+        if (!response.ok) throw new Error('Ошибка сервера');
 
-        if (window.Telegram?.WebApp) {
-            window.Telegram.WebApp.close();
-        } else {
-            alert('Заказ отправлен!');
-        }
+        // Закрываем WebApp
+        window.Telegram.WebApp.close();
+
     } catch (error) {
         console.error('Checkout error:', error);
-        alert('Ошибка оформления заказа');
+        alert('Ошибка оформления заказа: ' + error.message);
     }
 }
 
