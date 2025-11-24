@@ -364,6 +364,8 @@ function renderCart() {
     document.getElementById('total-price').innerText = totalPrice.toLocaleString() + ' ₽';
     document.getElementById('total-count').innerText = totalItems;
 }
+console.log("initDataUnsafe", window.Telegram?.WebApp?.initDataUnsafe);
+console.log("user", window.Telegram?.WebApp?.initDataUnsafe?.user);
 
 async function goToCheckout() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
