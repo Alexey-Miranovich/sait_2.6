@@ -4,8 +4,8 @@ const products = [
     { 
         id: 1, 
         name: "Mounjaro KwikPen 2.5мг", 
-        price: 51000, 
-        image: "images_sait/mounjaro-2.5mg.webp", 
+        price: 45000, 
+        image: "images/mounjaro-2.5mg.webp", 
         brand: "Eli Lilly",
         shortDesc: "1 ручка • 4 введения",
         description: "Мунджаро (тирзепатид) — препарат для снижения веса и контроля гликемии. Форма выпуска: шприц‑ручка KwikPen 2.5мг, 4 введения.",
@@ -14,8 +14,8 @@ const products = [
     { 
         id: 2, 
         name: "Mounjaro KwikPen 5мг", 
-        price: 51000, 
-        image: "images_sait/mounjaro-5mg.webp", 
+        price: 45000, 
+        image: "images/mounjaro-5mg.webp", 
         brand: "Eli Lilly",
         shortDesc: "1 ручка • 4 введения",
         description: "Мунджаро (тирзепатид) — препарат для снижения веса и контроля гликемии. Форма выпуска: шприц‑ручка KwikPen 5мг, 4 введения.",
@@ -24,8 +24,8 @@ const products = [
     { 
         id: 3, 
         name: "Mounjaro KwikPen 7.5мг", 
-        price: 51000, 
-        image: "images_sait/mounjaro-7.5mg.webp", 
+        price: 45000, 
+        image: "images/mounjaro-7.5mg.webp", 
         brand: "Eli Lilly",
         shortDesc: "1 ручка • 4 введения",
         description: "Мунджаро (тирзепатид) — препарат для снижения веса и контроля гликемии. Форма выпуска: шприц‑ручка KwikPen 7.5мг, 4 введения.",
@@ -34,8 +34,8 @@ const products = [
     { 
         id: 4, 
         name: "Mounjaro KwikPen 10мг", 
-        price: 51000, 
-        image: "images_sait/mounjaro-10mg.webp", 
+        price: 45000, 
+        image: "images/mounjaro-10mg.webp", 
         brand: "Eli Lilly",
         shortDesc: "1 ручка • 4 введения",
         description: "Мунджаро (тирзепатид) — препарат для снижения веса и контроля гликемии. Форма выпуска: шприц‑ручка KwikPen 10мг, 4 введения.",
@@ -44,8 +44,8 @@ const products = [
     { 
         id: 5, 
         name: "Mounjaro KwikPen 12.5мг", 
-        price: 51000, 
-        image: "images_sait/mounjaro-12.5mg.webp", 
+        price: 48000, 
+        image: "images/mounjaro-12.5mg.webp", 
         brand: "Eli Lilly",
         shortDesc: "1 ручка • 4 введения",
         description: "Мунджаро (тирзепатид) — препарат для снижения веса и контроля гликемии. Форма выпуска: шприц‑ручка KwikPen 12.5мг, 4 введения.",
@@ -54,8 +54,8 @@ const products = [
     { 
         id: 6, 
         name: "Mounjaro KwikPen 15мг", 
-        price: 51000, 
-        image: "images_sait/mounjaro-15mg.webp", 
+        price: 50000, 
+        image: "images/mounjaro-15mg.webp", 
         brand: "Eli Lilly",
         shortDesc: "1 ручка • 4 введения",
         description: "Мунджаро (тирзепатид) — препарат для снижения веса и контроля гликемии. Форма выпуска: шприц‑ручка KwikPen 15мг, 4 введения.",
@@ -64,8 +64,8 @@ const products = [
     { 
         id: 7, 
         name: "Ozempic 1мг", 
-        price: 18500, 
-        image: "images_sait/ozempic-1mg.webp", 
+        price: 19000, 
+        image: "images/ozempic-1mg.webp", 
         brand: "Novo Nordisk",
         shortDesc: "1 ручка • 4 введения",
         description: "Оземпик (Ozempic, семаглутид) — современный препарат для лечения сахарного диабета 2 типа и контроля веса. Применяется 1 раз в неделю в виде инъекций.",
@@ -75,7 +75,7 @@ const products = [
         id: 8, 
         name: "NAD+ 1200мг", 
         price: 55000, 
-        image: "images_sait/nad-1200mg.webp", 
+        image: "images/nad-1200mg.webp", 
         brand: "BioMedika",
         shortDesc: "1 ручка • 1 введение",
         description: "Никотинамид аденин динуклеотид (НАД) — кофермент, который играет ключевую роль в метаболизме и энергетическом обмене клеток.",
@@ -84,8 +84,8 @@ const products = [
     { 
         id: 9, 
         name: "Immunorho Kedrion 300мкг", 
-        price: 17000, 
-        image: "images_sait/immunorho-300mcg.webp", 
+        price: 18000, 
+        image: "images/immunorho-300mcg.webp", 
         brand: "Kedrion",
         shortDesc: "1 флакон • 1 введение",
         description: "Иммуноглобулин человека антирезус Rho(D). Лиофилизат для приготовления раствора для внутримышечного введения, 300 мкг.",
@@ -96,7 +96,7 @@ const products = [
     { 
         id: 10, 
         name: "Mounjaro (Тирзепатид) 15 mg", 
-        price: 0, // Укажи цену
+        price: 50000, // Укажи цену
         image: "images/mounjaro-15mg.jpg", 
         brand: "Eli Lilly",
         shortDesc: "15 мг • 1 раз в неделю",
@@ -106,7 +106,7 @@ const products = [
     { 
         id: 11, 
         name: "Ozempic (Семаглутид) 1 mg", 
-        price: 0, // Укажи цену
+        price: 54000, // Укажи цену
         image: "images/ozempic-1mg.jpg", 
         brand: "Novo Nordisk",
         shortDesc: "1 мг • 1 раз в неделю",
@@ -116,7 +116,7 @@ const products = [
     { 
         id: 12, 
         name: "MOTS-C Peptide Pen", 
-        price: 0, // Укажи цену
+        price: 20000, // Укажи цену
         image: "images/mots-c-pen.jpg", 
         brand: "Peptide",
         shortDesc: "Картридж + автоинжектор",
@@ -126,7 +126,7 @@ const products = [
     { 
         id: 13, 
         name: "Xeloda (Капецитабин) 500 mg", 
-        price: 0, // Укажи цену
+        price: 30000, // Укажи цену
         image: "images/xeloda-500mg.jpg", 
         brand: "Roche",
         shortDesc: "Таблетки 500 мг",
@@ -136,7 +136,7 @@ const products = [
     { 
         id: 14, 
         name: "Saxenda (Лираглутид) 6 mg/ml", 
-        price: 0, // Укажи цену
+        price: 18000, // Укажи цену
         image: "images/saxenda-6mgml.jpg", 
         brand: "Novo Nordisk",
         shortDesc: "Раствор для инъекций",
@@ -146,7 +146,7 @@ const products = [
     { 
         id: 15, 
         name: "ImmunoRho 300 mcg", 
-        price: 0, // Укажи цену
+        price: 18000, // Укажи цену
         image: "images/immuno-rho-300mcg.jpg", 
         brand: "Kedrion Biopharma",
         shortDesc: "Порошок + растворитель",
@@ -156,7 +156,7 @@ const products = [
     { 
         id: 16, 
         name: "Pegasys 180 mcg / 0.5 ml", 
-        price: 0, // Укажи цену
+        price: 140000, // Укажи цену
         image: "images/pegasys-180mcg.jpg", 
         brand: "Roche",
         shortDesc: "Готовый раствор в шприцах",
@@ -166,7 +166,7 @@ const products = [
     { 
         id: 17, 
         name: "Tagrisso (Осимертиниб) 80 mg", 
-        price: 0, // Укажи цену
+        price: 200000, // Укажи цену
         image: "images/tagrisso-80mg.jpg", 
         brand: "AstraZeneca",
         shortDesc: "30 таблеток",
@@ -176,7 +176,7 @@ const products = [
     { 
         id: 18, 
         name: "Линпарза (Олапариб) 150 мг", 
-        price: 0, // Укажи цену
+        price: 50000, // Укажи цену
         image: "images/lynparza-150mg.jpg", 
         brand: "AstraZeneca",
         shortDesc: "56 таблеток",
@@ -186,12 +186,72 @@ const products = [
     { 
         id: 19, 
         name: "Чампикс (Варениклин) 1 мг", 
-        price: 0, // Укажи цену
+        price: 14000, // Укажи цену
         image: "images/champix-1mg.jpg", 
         brand: "Pfizer",
         shortDesc: "112 таблеток",
         description: "Таблетированная форма с действующим веществом варениклин, предназначенная для терапии никотиновой зависимости.",
         specs: ["Дозировка: 1 mg", "Форма: таблетки", "Количество: 112 шт"]
+    },
+    { 
+        id: 20, 
+        name: "Оземпик 0.25мг (1 ручка)", 
+        price: 18000, 
+        image: "images/Оземпик_0.25мг(1шт).jpg", 
+        brand: "Novo Nordisk",
+        shortDesc: "1 шприц-ручка",
+        description: "Оземпик (Семаглутид) 0.25 мг. Раствор для подкожного введения.",
+        specs: ["Дозировка: 0.25 мг", "Упаковка: 1 ручка"]
+    },
+    { 
+        id: 21, 
+        name: "Оземпик 0.5мг (1 ручка)", 
+        price: 18000, 
+        image: "images/Оземпик_0.5мг(1шт).jpg", 
+        brand: "Novo Nordisk",
+        shortDesc: "1 шприц-ручка",
+        description: "Оземпик (Семаглутид) 0.5 мг. Раствор для подкожного введения.",
+        specs: ["Дозировка: 0.5 мг", "Упаковка: 1 ручка"]
+    },
+    { 
+        id: 22, 
+        name: "Оземпик 1мг (3 ручки)", 
+        price: 54000, 
+        image: "images/Оземпик_1мг(3шт).jpg", 
+        brand: "Novo Nordisk",
+        shortDesc: "Упаковка 3 ручки",
+        description: "Оземпик (Семаглутид) 1 мг. Выгодная упаковка (3 шприц-ручки).",
+        specs: ["Дозировка: 1 мг", "Упаковка: 3 ручки"]
+    },
+    { 
+        id: 23, 
+        name: "Саксенда (5 ручек)", 
+        price: 22000, 
+        image: "images/Саксенда(5шт).jpg", 
+        brand: "Novo Nordisk",
+        shortDesc: "Упаковка №5",
+        description: "Саксенда (Лираглутид). Раствор для подкожных инъекций. В упаковке 5 шприц-ручек.",
+        specs: ["Количество: 5 шт", "Производитель: Novo Nordisk"]
+    },
+    { 
+        id: 24, 
+        name: "Пегасис 135мкг (1 шт)", 
+        price: 40000, 
+        image: "images/Пегасис(135мг).jpg",
+        brand: "Roche",
+        shortDesc: "1 шприц-тюбик",
+        description: "Пегинтерферон альфа-2а. Дозировка 135 мкг.",
+        specs: ["Дозировка: 135 мкг", "Упаковка: 1 шт"]
+    },
+    { 
+        id: 25, 
+        name: "Пегасис 180мкг (4 шт)", 
+        price: 140000, 
+        image: "images/Пегасис_180мг(4шт).webp", 
+        brand: "Roche",
+        shortDesc: "Упаковка №4",
+        description: "Пегинтерферон альфа-2а. Выгодная упаковка, 4 шприца.",
+        specs: ["Дозировка: 180 мкг", "Упаковка: 4 шт"]
     }
 ];
 
