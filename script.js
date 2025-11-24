@@ -365,59 +365,53 @@ function renderCart() {
     document.getElementById('total-count').innerText = totalItems;
 }
 
-function goToCheckout() {
-    // Проверяем есть ли Telegram WebApp
-    const tg = window.Telegram?.WebApp;
-    const user = tg?.initDataUnsafe?.user || {
-        id: 123456789, // Тестовый ID
-        first_name: 'Тест',
-        last_name: 'Тестов'
+async function goToCheckout() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (!cart.length) return;
+
+    const user = window.Telegram?.WebApp?.initDataUnsafe?.user || {
+        id: 999999,
+        username: 'test_user',
+        first_name: 'Test',
+        last_name: 'User'
     };
-    
-    const city = localStorage.getItem('selectedCity') || 'Москва';
-    
+
+    // Получаем город из элемента или ставим "Москва" по умолчанию
+    const cityElement = document.querySelector('.city-selector');
+    const city = cityElement ? cityElement.textContent.trim() : 'Москва и область';
+
     const orderData = {
-        telegram_id: user.id,
-        first_name: user.first_name,
-        last_name: user.last_name,
+        user_id: user.id,
+        username: user.username || null,
+        first_name: user.first_name || null,
+        last_name: user.last_name || null,
         city: city,
-        products: cart.map(item => ({
-            id: item.id,
-            name: item.name,
-            price: item.price,
-            count: item.count,
-            total: item.price * item.count
-        })),
-        total_amount: cart.reduce((sum, item) => sum + (item.price * item.count), 0),
-        total_items: cart.reduce((sum, item) => sum + item.count, 0)
+        cart: cart,
+        total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
     };
-    
-    console.log('Отправляем данные:', orderData);
-    
-    fetch('https://n8n.biomedika.shop/webhook/bce565c3-60bc-4f90-88c6-70887ebf40e5', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(orderData)
-    })
-    .then(response => {
-        console.log('Статус:', response.status);
-        if (!response.ok) throw new Error('Ошибка сервера');
-        return response.text();
-    })
-    .then(data => {
-        console.log('Ответ:', data);
-        cart = [];
-        saveCart();
-        alert('Заказ оформлен!');
-        window.location.href = 'index.html';
-    })
-    .catch(error => {
-        console.error('Ошибка:', error);
-        alert('Ошибка: ' + error.message);
-    });
+
+    console.log('✓ Order data:', JSON.stringify(orderData, null, 2));
+
+    try {
+        const response = await fetch('https://n8n.biomedika.shop/webhook/bce565c3-60bc-4f90-88c6-70887ebf40e5', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderData)
+        });
+
+        if (!response.ok) throw new Error('Order failed');
+
+        if (window.Telegram?.WebApp) {
+            window.Telegram.WebApp.close();
+        } else {
+            alert('Заказ отправлен!');
+        }
+    } catch (error) {
+        console.error('Checkout error:', error);
+        alert('Ошибка оформления заказа');
+    }
 }
+
 
 // --- ФУНКЦИИ ИЗБРАННОГО ---
 function saveWishlist() {
