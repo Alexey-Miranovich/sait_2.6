@@ -63,7 +63,7 @@ const products = [
     },
     { 
         id: 7, 
-        name: "Ozempic 1мг", 
+        name: "Ozempic 1мг (1шт)", 
         price: 19000, 
         image: "images/ozempic-1mg.webp", 
         brand: "Novo Nordisk",
@@ -115,7 +115,7 @@ const products = [
     },
     { 
         id: 12, 
-        name: "MOTS-C Peptide Pen", 
+        name: "MOTS-C Peptide Pen 10mg", 
         price: 20000, // Укажи цену
         image: "images/mots-c-pen.jpg", 
         brand: "Peptide",
@@ -135,33 +135,13 @@ const products = [
     },
     { 
         id: 14, 
-        name: "Saxenda (Лираглутид) 6 mg/ml", 
+        name: "Saxenda 6 mg/ml(3шт)", 
         price: 18000, // Укажи цену
         image: "images/saxenda-6mgml.jpg", 
         brand: "Novo Nordisk",
         shortDesc: "Раствор для инъекций",
         description: "Шприц-ручки, содержащие раствор лираглутида для подкожных инъекций. Подходит для ежедневного применения.",
         specs: ["Концентрация: 6 mg/ml", "Формат: 3 шприц-ручки в упаковке", "Дозировка: от 0.6 до 3.0 mg"]
-    },
-    { 
-        id: 15, 
-        name: "ImmunoRho 300 mcg", 
-        price: 18000, // Укажи цену
-        image: "images/immuno-rho-300mcg.jpg", 
-        brand: "Kedrion Biopharma",
-        shortDesc: "Порошок + растворитель",
-        description: "Иммуноглобулин человека Anti-D для приготовления раствора. В комплекте флакон с порошком 300 mcg и ампула растворителя.",
-        specs: ["Дозировка: 300 mcg", "Форма: порошок + растворитель", "Вводится после приготовления"]
-    },
-    { 
-        id: 16, 
-        name: "Pegasys 180 mcg / 0.5 ml", 
-        price: 140000, // Укажи цену
-        image: "images/pegasys-180mcg.jpg", 
-        brand: "Roche",
-        shortDesc: "Готовый раствор в шприцах",
-        description: "Препарат пегинтерферона альфа-2а для подкожного введения. Упаковка включает 4 шприца и 4 иглы.",
-        specs: ["Дозировка: 180 mcg на 0.5 ml", "Форма: готовые шприцы", "Комплект: 4 шприца + 4 иглы"]
     },
     { 
         id: 17, 
@@ -195,7 +175,7 @@ const products = [
     },
     { 
         id: 20, 
-        name: "Оземпик 0.25мг (1 ручка)", 
+        name: "Ozempic 0.25мг (1шт)", 
         price: 18000, 
         image: "images/Оземпик_0.25мг(1шт).jpg", 
         brand: "Novo Nordisk",
@@ -205,7 +185,7 @@ const products = [
     },
     { 
         id: 21, 
-        name: "Оземпик 0.5мг (1 ручка)", 
+        name: "Ozempic 0.5мг (1шт)", 
         price: 18000, 
         image: "images/Оземпик_0.5мг(1шт).jpg", 
         brand: "Novo Nordisk",
@@ -215,7 +195,7 @@ const products = [
     },
     { 
         id: 22, 
-        name: "Оземпик 1мг (3 ручки)", 
+        name: "Ozempic 1мг (3шт)", 
         price: 54000, 
         image: "images/Оземпик_1мг(3шт).jpg", 
         brand: "Novo Nordisk",
@@ -225,7 +205,7 @@ const products = [
     },
     { 
         id: 23, 
-        name: "Саксенда (5 ручек)", 
+        name: "Saxenda (5шт)", 
         price: 22000, 
         image: "images/Саксенда(5шт).jpg", 
         brand: "Novo Nordisk",
@@ -235,7 +215,7 @@ const products = [
     },
     { 
         id: 24, 
-        name: "Пегасис 135мкг (1 шт)", 
+        name: "Pegasys 135 mcg", 
         price: 40000, 
         image: "images/Пегасис(135мг).jpg",
         brand: "Roche",
@@ -245,7 +225,7 @@ const products = [
     },
     { 
         id: 25, 
-        name: "Пегасис 180мкг (4 шт)", 
+        name: "Pegasys 180 mcg (4шт)", 
         price: 140000, 
         image: "images/Пегасис_180мг(4шт).webp", 
         brand: "Roche",
@@ -364,8 +344,6 @@ function renderCart() {
     document.getElementById('total-price').innerText = totalPrice.toLocaleString() + ' ₽';
     document.getElementById('total-count').innerText = totalItems;
 }
-console.log("initDataUnsafe", window.Telegram?.WebApp?.initDataUnsafe);
-console.log("user", window.Telegram?.WebApp?.initDataUnsafe?.user);
 
 async function goToCheckout() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -418,6 +396,7 @@ async function goToCheckout() {
         window.Telegram.WebApp.close();
     }
 }
+
 
 // --- ФУНКЦИИ ИЗБРАННОГО ---
 function saveWishlist() {
