@@ -398,7 +398,7 @@ async function goToCheckout() {
 
         // Отправляем запрос на сервер
         // Мы используем await, чтобы данные успели уйти до закрытия окна
-        await fetch('https://n8n.biomedika.shop/webhook/bce565c3-60bc-4f90-88c6-70887ebf40e5', {
+        await fetch('https://n8n.biomedika.shop/webhook-test/bce565c3-60bc-4f90-88c6-70887ebf40e5', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(orderData)
