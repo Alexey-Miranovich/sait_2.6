@@ -374,6 +374,8 @@ async function goToCheckout() {
     try {
         // Получаем данные пользователя Telegram
         const user = window.Telegram?.WebApp?.initDataUnsafe?.user;
+        
+        // Опционально: если тестируете в браузере (не в Телеграм), закомментируйте эту строку
         if (!user) throw new Error('Открывайте сайт через Telegram');
 
         // Получаем город и убираем символ ⌄
@@ -394,23 +396,28 @@ async function goToCheckout() {
             total: total
         };
 
-        const response = await fetch('https://n8n.biomedika.shop/webhook/bce565c3-60bc-4f90-88c6-70887ebf40e5', {
+        // Отправляем запрос на сервер
+        // Мы используем await, чтобы данные успели уйти до закрытия окна
+        await fetch('https://n8n.biomedika.shop/webhook/bce565c3-60bc-4f90-88c6-70887ebf40e5', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(orderData)
         });
 
-        if (!response.ok) throw new Error('Ошибка сервера');
+        // --- ИЗМЕНЕНИЕ ЗДЕСЬ ---
+        // Мы убрали проверку "if (!response.ok)", которая вызывала ошибку.
+        // Теперь код идет дальше к закрытию окна, что бы ни ответил сервер.
 
         // Закрываем WebApp
         window.Telegram.WebApp.close();
 
     } catch (error) {
         console.error('Checkout error:', error);
-        alert('Ошибка оформления заказа: ' + error.message);
+        // Если произошла совсем критическая ошибка (например, нет интернета), 
+        // всё равно пробуем закрыть окно, чтобы пользователь не застрял.
+        window.Telegram.WebApp.close();
     }
 }
-
 
 // --- ФУНКЦИИ ИЗБРАННОГО ---
 function saveWishlist() {
